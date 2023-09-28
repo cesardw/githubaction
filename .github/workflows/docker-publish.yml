@@ -1,24 +1,11 @@
-name: Docker Publish
-
-on:
-  push:
-    branches:
-      - master  # el nombre de tu rama principal
-
+on: push
+name: trabajo
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout código
-      uses: actions/checkout@master
-
-   # - name: Iniciar Docker
-    #  run: docker info
-
-   # - name: Login en Docker Hub
-    #  run: docker login -u ${{ secrets.DOCKER_USERNAME}} -p ${{ secrets.DOCKER_PASSWORD }}
-
+    - uses: actions/checkout@master
     - name: Build and push to docker
       uses: docker/build-push-action@v1
       with:
