@@ -11,16 +11,25 @@ jobs:
 
     steps:
     - name: Checkout código
-      uses: actions/checkout@v2
+      uses: actions/checkout@master
 
-    - name: Iniciar Docker
-      run: docker info
+   # - name: Iniciar Docker
+    #  run: docker info
 
    # - name: Login en Docker Hub
     #  run: docker login -u ${{ secrets.DOCKER_USERNAME}} -p ${{ secrets.DOCKER_PASSWORD }}
 
-    - name: Build de la imagen de Docker
-      run: docker build -t cesardw/githubaction:latest .
+    - name: Build and push to docker
+      uses: docker/build-push-action@v1
+      with:
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+        repository: ${{ github.repository }}
+        tag_with_ref: true
+        tag_with_sha: true
+        tags: ${{ github.sha }}
 
-    - name: Push de la imagen a Docker Hub
-      run: docker push cesardw/githubaction:latest
+     # run: docker build -t cesardw/githubaction:latest .
+
+    #- name: Push de la imagen a Docker Hub
+     # run: docker push cesardw/githubaction:latest
