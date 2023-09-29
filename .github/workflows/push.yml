@@ -20,7 +20,7 @@ jobs:
       run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
 
     - name: Build de la imagen de Docker
-      run: docker build -t cesardw/githubaction:latest .
+      run: docker build -t cesardw/prueba2:latest .
 
     - name: Push de la imagen a Docker Hub
-      run: docker push cesardw/githubaction:latest
+      run: docker push cesardw/prueba2:latest
