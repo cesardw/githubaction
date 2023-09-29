@@ -3,8 +3,7 @@ name: Docker Publish
 on:
   push:
     branches:
-      - master  # Cambia esto al nombre de tu rama principal
-
+      - master  
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -20,7 +19,7 @@ jobs:
       run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
 
     - name: Build de la imagen de Docker
-      run: docker build -t cesardw/prueba2:latest .
+      run: docker build -t cesardw/prueba3:latest .
 
     - name: Push de la imagen a Docker Hub
-      run: docker push cesardw/prueba2:latest
+      run: docker push cesardw/prueba3:latest
